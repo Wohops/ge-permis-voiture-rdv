@@ -1,15 +1,12 @@
-var myNoReg = 1234567;
-var myBirthday = new Date();
-
 function loginWithFormValues(personNumber, birthday) {
   getElement("noReg").value = personNumber;
-  setTimeout(function() { /* do nothing */ }, 100);
+  setTimeout(function() { /* do nothing */}, 100);
   getElement("dateJJ").value = pad(birthday.getUTCDate() + 1);
-  setTimeout(function() { /* do nothing */ }, 100);
+  setTimeout(function() { /* do nothing */}, 100);
   getElement("dateMM").value = pad(birthday.getUTCMonth() + 1);
-  setTimeout(function() { /* do nothing */ }, 100);
+  setTimeout(function() { /* do nothing */}, 100);
   getElement("dateAAAA").value = birthday.getUTCFullYear();
-  setTimeout(function() { /* do nothing */ }, 100);
+  setTimeout(function() { /* do nothing */}, 100);
 
   getElement("valider").click();
 }
@@ -54,6 +51,6 @@ function getElement(elementName) {
   return element[0];
 }
 
-/* 1. */ loginWithFormValues(myNoReg, myBirthday);
+/* 1. */ loginWithFormValues(1234567, new Date(2001, 8, 27));
 /* 2. */ moveAppointment();
 /* 3. */ searchFirstAvailableDate();
