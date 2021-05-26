@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="popup.css" >
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="table_header">Num&eacute;ro de personne</th>
+        <td><input type="text" id="personId"></th>
+      </tr>
+      <tr>
+        <td class="table_header">Date de naissance</th>
+        <td><input type="date" id="birthday"></th>
+      </tr>
+    </table>
+    <br />
+    <hr />
+    <div id='clickme'><a href="https://ge.ch/cari-online/examensPublic">Gen&egrave;ve: Bureau des Autos - RDV pour examen</a></div>
+    <br />
+    <hr />
+    <div id="status"></div>
+    <br />
+    <button id="check-meeting" class="button red">V&eacute;rifier RDV</button>
+    <button id="save" class="button black">Sauver</button>
+    <br />
+  </body>
+  <script src="popup.js"></script>
+</html>
