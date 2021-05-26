@@ -1,4 +1,4 @@
-var myNoReg = 1234567
+var myNoReg = 1234567;
 var myBirthday = new Date();
 
 function loginWithFormValues(personNumber, birthday) {
@@ -22,6 +22,24 @@ function moveAppointment() {
   link.click();
 }
 
+function searchFirstAvailableDate() {
+  var tableHalfDays = document.getElementById("idDivTablePlaceLibre");
+  var halfDays = tableHalfDays.getElementsByClassName("columnHalfDay");
+  var found = false;
+  for (var i = 0; i < halfDays.length; i++) {
+    var links = halfDays[i].getElementsByTagName("a");
+    if (links.length >= 1) {
+      console.log("found! " + links[0].href);
+      console.log(links[0]);
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    document.getElementById("nextWeek").click();
+  }
+}
+
 function pad(num) {
   num = num.toString();
   while (num.length < 2) num = "0" + num;
@@ -36,5 +54,6 @@ function getElement(elementName) {
   return element[0];
 }
 
-
-loginWithFormValues(myNoReg, myBirthday);
+/* 1. */ loginWithFormValues(myNoReg, myBirthday);
+/* 2. */ moveAppointment();
+/* 3. */ searchFirstAvailableDate();
