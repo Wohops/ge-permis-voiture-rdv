@@ -14,13 +14,20 @@
         <td>Date de naissance</th>
         <td><input type="date" id="birthday"></th>
       </tr>
+      <tr>
+        <td>Examen au plus tard le</th>
+        <td><input type="date" id="maxDate"></th>
+      </tr>
     </table>
     <div id="clickme">
       <div class="flag"><img src="img/geneva.png" class="flag" /></div>
       <div class="link"><a href="https://ge.ch/cari-online/examensPublic">Bureau des Autos - RDV pour examen</a></div>
     </div>
-    <button id="check-meeting" class="button red">V&eacute;rifier RDV</button>
-    <button id="save" class="button black">Sauver</button>
+    <div>
+      <button id="check-meeting" class="button red">V&eacute;rifier RDV</button>
+      <button id="save" class="button blue">Sauver</button>
+      <button id="reset" class="button black">Effacer</button>
+    </div>
     <div id="status"></div>
   </body>
   <script src="popup.js"></script>

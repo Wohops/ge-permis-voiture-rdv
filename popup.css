@@ -4,7 +4,7 @@ input {
 
 td:first-child {
   font-weight: bold;
-  min-width: 120px;
+  min-width: 130px;
   padding-right: 5px;
 }
 
@@ -42,10 +42,10 @@ div#clickme div.link {
 }
 
 .button {
-  width: 48%;
+  width: 32.5%;
   border: none;
   color: white;
-  padding: 15px 15px;
+  padding: 5px 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -75,4 +75,14 @@ div#clickme div.link {
 .black:hover {
   color: #555555;
   border: 2px solid #555555;
+}
+
+.blue {
+  background-color: #008CBA;
+  border: 2px solid #008CBA;
+}
+
+.blue:hover {
+  color: #008CBA;
+  border: 2px solid #008CBA;
 }
