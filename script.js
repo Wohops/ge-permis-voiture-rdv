@@ -23,8 +23,8 @@ function searchFirstAvailableDate() {
   var tableHalfDays = document.getElementById("idDivTablePlaceLibre");
   var halfDays = tableHalfDays.getElementsByClassName("columnHalfDay");
   var found = false;
-  for (var i = 0; i < halfDays.length; i++) {
-    var links = halfDays[i].getElementsByTagName("a");
+  for (let halfDay of halfDays) {
+    var links = halfDay.getElementsByTagName("a");
     if (links.length >= 1) {
       console.log("found! " + links[0].href);
       console.log(links[0]);
