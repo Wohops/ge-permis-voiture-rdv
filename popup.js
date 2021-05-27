@@ -6,20 +6,73 @@ document.querySelector('#clickme').addEventListener("click", function() {
 });
 
 document.querySelector('#check-meeting').addEventListener("click", function() {
-  chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+  chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
     var url = tabs[0].url;
     if (url !== "https://ge.ch/cari-online/examensPublic") {
       update_status('Veuillez vous rendre sur le site du Bureau des Autos en cliquant le liens ci-dessus.');
       return;
     }
-    update_status('Not yet implemented');
-    debugger;
+    start_process();
   });
 });
 
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('reset').addEventListener('click', reset_options);
+
+function start_process() {
+
+  inject_utility_script();
+
+  login();
+
+}
+
+function login() {
+  chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
+    var currentTab = tabs[0];
+    chrome.scripting.executeScript(
+      {
+        target: {tabId: currentTab.id, allFrames: true},
+        function: login_with_form_values,
+      },
+      () => {
+        // TODO call "deplacer"
+        setTimeout(function() { update_status("Not yet implemented!"); }, 3000);
+        debugger;
+      }
+    );
+  });
+}
+
+function inject_utility_script() {
+  chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
+    var currentTab = tabs[0];
+    chrome.scripting.executeScript(
+      {
+        target: {tabId: currentTab.id, allFrames: true},
+        files: ['script.js']
+      },
+      () => { /* do nothing */ }
+    );
+  });
+}
+
+function login_with_form_values() {
+  chrome.storage.local.get({
+    "personId": "",
+    "birthday": ""
+  }, function(item) {
+    getElement("noReg").value = item.personId;
+
+    var birthday = new Date(item.birthday);
+    getElement("dateJJ").value = pad(birthday.getUTCDate());
+    getElement("dateMM").value = pad(birthday.getUTCMonth() + 1);
+    getElement("dateAAAA").value = birthday.getUTCFullYear();
+
+    getElement("valider").click();
+  });
+}
 
 function update_status(text) {
   var status = document.getElementById('status');

@@ -1,16 +1,3 @@
-function loginWithFormValues(personNumber, birthday) {
-  getElement("noReg").value = personNumber;
-  setTimeout(function() { /* do nothing */}, 100);
-  getElement("dateJJ").value = pad(birthday.getUTCDate() + 1);
-  setTimeout(function() { /* do nothing */}, 100);
-  getElement("dateMM").value = pad(birthday.getUTCMonth() + 1);
-  setTimeout(function() { /* do nothing */}, 100);
-  getElement("dateAAAA").value = birthday.getUTCFullYear();
-  setTimeout(function() { /* do nothing */}, 100);
-
-  getElement("valider").click();
-}
-
 function moveAppointment() {
   var form = getElement("selectExamens")
   var columns = form.getElementsByClassName("column");
@@ -51,6 +38,5 @@ function getElement(elementName) {
   return element[0];
 }
 
-/* 1. */ loginWithFormValues(1234567, new Date(2001, 8, 27));
-/* 2. */ moveAppointment();
-/* 3. */ searchFirstAvailableDate();
+/* 2. moveAppointment(); */
+/* 3. searchFirstAvailableDate(); */
