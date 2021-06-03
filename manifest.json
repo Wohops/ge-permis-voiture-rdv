@@ -11,8 +11,9 @@
     "default_popup": "popup.html"
   },
   "content_scripts": [{
-    "matches": [ "https://ge.ch/cari-online/examensPublic" ],
-    "js": [ "script.js" ]
+    "matches": [ "https://ge.ch/cari-online/*" ],
+    "js": [ "script.js" ],
+    "css": [ "modal.css" ]
   }],
   "permissions": [
     "storage",
@@ -20,6 +21,6 @@
     "scripting"
   ],
   "host_permissions": [
-    "https://ge.ch/cari-online/examensPublic"
+    "https://ge.ch/cari-online/*"
   ]
 }

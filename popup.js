@@ -98,6 +98,7 @@ function search_appointment_in_page() {
   for (const halfDay of halfDays) {
     var links = halfDay.getElementsByTagName("a");
     if (links.length >= 1) {
+      openModal();
       console.log("found! " + links[0].href);
       console.log(links[0]);
       found = true;
