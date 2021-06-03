@@ -38,5 +38,7 @@ function getElement(elementName) {
   return element[0];
 }
 
+
+
 /* 2. moveAppointment(); */
 /* 3. searchFirstAvailableDate(); */

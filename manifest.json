@@ -10,12 +10,18 @@
     "default_title": "GE: Bureau des Autos - RDV Exam",
     "default_popup": "popup.html"
   },
+  "content_scripts": [{
+    "matches": [ "https://ge.ch/cari-online/examensPublic" ],
+    "all_frames": true,
+    "js": [ "script.js" ],
+    "run_at": "document_end"
+  }],
   "permissions": [
     "storage",
     "tabs",
     "scripting"
   ],
-   "host_permissions": [
-     "https://ge.ch/cari-online/examensPublic"
-   ]
+  "host_permissions": [
+    "https://ge.ch/cari-online/examensPublic"
+  ]
 }
