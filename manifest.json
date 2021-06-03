@@ -1,6 +1,6 @@
 {
   "name": "Genève:Bureau des Autos - Recherche de RDV pour examen",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 3,
   "description": "TODO",
   "action": {
@@ -12,9 +12,7 @@
   },
   "content_scripts": [{
     "matches": [ "https://ge.ch/cari-online/examensPublic" ],
-    "all_frames": true,
-    "js": [ "script.js" ],
-    "run_at": "document_end"
+    "js": [ "script.js" ]
   }],
   "permissions": [
     "storage",
