@@ -56,6 +56,7 @@ function move_appointment_listener(tabId, changeInfo, tab) {
 }
 
 function move_appointment(tabId) {
+  chrome.tabs.onUpdated.addListener(search_appointment_listener);
   chrome.storage.local.set({ 'processStep': "MOVING" });
 
   return chrome.scripting.executeScript({
@@ -70,6 +71,42 @@ function move_appointment_in_page() {
   var lastColumn = columns[columns.length -1];
   var link = lastColumn.getElementsByTagName("a")[0];
   link.click();
+}
+
+function search_appointment_listener(tabId, changeInfo, tab) {
+  chrome.storage.local.get({ 'workTab': "", 'processStep': "" }, function(item) {
+    if (tabId == item.workTab && changeInfo.status == "complete"
+      && (item.processStep == "MOVING" || item.processStep == "SEARCHING")) {
+      search_appointment(tabId);
+    }
+  });
+}
+
+function search_appointment(tabId) {
+  chrome.storage.local.set({ 'processStep': "SEARCHING" });
+
+  return chrome.scripting.executeScript({
+    'target': { 'tabId': tabId, 'allFrames': true },
+    function: search_appointment_in_page
+  });
+}
+
+function search_appointment_in_page() {
+  var tableHalfDays = document.getElementById("idDivTablePlaceLibre");
+  var halfDays = tableHalfDays.getElementsByClassName("columnHalfDay");
+  var found = false;
+  for (let halfDay of halfDays) {
+    var links = halfDay.getElementsByTagName("a");
+    if (links.length >= 1) {
+      console.log("found! " + links[0].href);
+      console.log(links[0]);
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    document.getElementById("nextWeek").click();
+  }
 }
 
 /* ------------------------------------------------------------------------------------------ *
