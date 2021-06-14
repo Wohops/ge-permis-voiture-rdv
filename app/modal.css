@@ -18,7 +18,7 @@
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 50%;
+  width: 30%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -39,7 +39,7 @@
 .close {
   color: white;
   float: right;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -51,17 +51,38 @@
 }
 
 .modal-header {
-  padding: 2px 16px;
-  background-color: #5cb85c;
+  padding: 4px;
+  min-height: 15px;
+  background-color: #cc0000;
   color: white;
 }
 
+.modal-header h3 {
+  font-size: 20px;
+  margin: 2px;
+  color:  white;
+}
+
 .modal-body {
-  padding: 2px 16px;
+  margin: 10px;
+  padding: 2px;
+}
+
+p.modal-main-message {
+  font-weight: bold;
+  font-style: normal;
+  color: black;
+}
+
+p.modal-description {
+  font-weight: normal;
+  font-style: italic;
+  color: gray;
 }
 
 .modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
+  padding: 2px;
+  min-height: 15px;
+  background-color: #ffcc00;
   color: white;
 }

@@ -12,25 +12,35 @@ function getElement(elementName) {
   return element[0];
 }
 
-function openModal() {
+function openModal(title, text, description, link) {
   const parser = new DOMParser();
 
-  var modalContent =
-    '<div id="myModal" class="modal">'
-    + '  <div class="modal-content">'
-    + '    <div class="modal-header">'
-    + '      <span class="close">&times;</span>'
-    + '      <h2>Modal Header</h2>'
-    + '    </div>'
-    + '    <div class="modal-body">'
-    + '      <p>Some text in the Modal Body</p>'
-    + '      <p>Some other text...</p>'
-    + '    </div>'
-    + '    <div class="modal-footer">'
-    + '      <h2>Modal Footer</h3>'
-    + '    </div>'
-    + '  </div>'
-    + '</div>';
+  var modalContentStart = `
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h3>${title}</h3>
+        </div>
+        <div class="modal-body">
+          <p class="modal-main-message">${text}</p>
+          <p class="modal-description">${description}</p>
+    `;
+  var modalContentMiddle = "";
+  if (link) {
+    modalContentMiddle = `
+          <a href=${link}>CHANGER LA DATE</a>
+    `;
+  }
+  var modalContentEnd = `
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+    `;
+
+  var modalContent = modalContentStart + modalContentMiddle + modalContentEnd;
 
   var modal = parser.parseFromString(modalContent, "text/html").getElementById("myModal");
   document.getElementsByTagName('body')[0].appendChild(modal);

@@ -70,7 +70,15 @@ function move_appointment_in_page() {
   var columns = form.getElementsByClassName('column');
   var lastColumn = columns[columns.length -1];
   var link = lastColumn.getElementsByTagName("a")[0];
-  link.click();
+  if (link) {
+    link.click();
+  } else {
+    openModal(
+      "Erreur - Operation impossible",
+      "Impossible de déplacer l'examen.",
+      "La date de votre examen est soit trop proche de la date actuelle, soit bloquée, soit la façon de remplir le formulaire à été changée depuis l'écriture de ce programme."
+    );
+  }
 }
 
 function search_appointment_listener(tabId, changeInfo, tab) {
@@ -98,9 +106,12 @@ function search_appointment_in_page() {
   for (const halfDay of halfDays) {
     var links = halfDay.getElementsByTagName("a");
     if (links.length >= 1) {
-      openModal();
-      console.log("found! " + links[0].href);
-      console.log(links[0]);
+      openModal(
+        "Examen - Date trouvée",
+        "Une session libre a été trouvée. Clickez sur le lien suivant pour séletionner cette date, ou fermer le popup pour étudier les autres options possibles.",
+        "",
+        links[0].href
+      );
       found = true;
       break;
     }
@@ -151,30 +162,25 @@ function reset_options() {
 function restore_options() {
   chrome.storage.local.get({
     'personId': "",
-    'birthday': "",
-    'maxDate': ""
+    'birthday': ""
   }, function(item) {
     document.getElementById('personId').value = item.personId;
     document.getElementById('birthday').value = item.birthday;
-    document.getElementById('maxDate').value = item.maxDate;
   });
 }
 
 function save_options() {
   var personId = document.getElementById('personId').value;
   var birthday = document.getElementById('birthday').value;
-  var maxDate = document.getElementById('maxDate').value;
-  save_all_options(personId, birthday, maxDate);
+  save_all_options(personId, birthday);
 }
 
-function save_all_options(personId, birthday, maxDate) {
+function save_all_options(personId, birthday) {
   document.getElementById('personId').value = personId;
   document.getElementById('birthday').value = birthday;
-  document.getElementById('maxDate').value = maxDate;
   chrome.storage.local.set({
     'personId': personId,
-    'birthday': birthday,
-    'maxDate': maxDate
+    'birthday': birthday
   }, function() {
     update_status('Configuration sauvée.');
   });

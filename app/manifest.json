@@ -1,8 +1,8 @@
 {
   "name": "Genève:Bureau des Autos - Recherche de RDV pour examen",
-  "version": "0.2",
+  "version": "1.0",
   "manifest_version": 3,
-  "description": "TODO",
+  "description": "Extension for Google Chrome allowing to simplify registration to driving license exams. https://github.com/m-g-sonar/ge-permis-voiture-rdv",
   "action": {
     "default_icon": {
       "256": "img/icon.png"
