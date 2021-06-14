@@ -156,7 +156,7 @@ function update_status(text) {
 }
 
 function reset_options() {
-  save_all_options("", "", "");
+  save_all_options("", "");
 }
 
 function restore_options() {
