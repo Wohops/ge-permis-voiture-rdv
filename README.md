@@ -52,3 +52,9 @@ Enfin, notez que:
 ![Open](img/4_click-link.png)
 
 5. Cliquer sur le bouton rouge `Vérifier RDV` pour lancer la recherche automatique sur le site web jusqu'à la prochaine date libre.
+
+![Open](img/5_click-verify.png)
+
+6. Les pages sucessives de la recherches vont ensuite s'ouvrir toute seule et l'extension va naviguer dans les tableau jusqu'à la première date libre, puis s'arrêter.
+
+7. Pour relancer une recherche, il suffit de quitter le site, et de re-clicker sur `Vérifier RDV`.
